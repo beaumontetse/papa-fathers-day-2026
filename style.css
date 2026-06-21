@@ -195,20 +195,22 @@ img { display: block; max-width: 100%; height: auto; }
   color: var(--ink-soft);
 }
 .chapter__date {
-  margin: 1.2rem 0 0;
-  font-size: 0.66rem;
-  letter-spacing: 0.28em;
+  display: block;
+  margin: 0.6rem 0 0;
+  text-align: right;          /* sits in the bottom-right corner under the photo */
+  font-size: 0.64rem;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--ink-soft);
-  opacity: 0.7;
+  opacity: 0.65;
 }
 .chapter__date::before {
   content: "";
   display: inline-block;
   width: 4px;
   height: 4px;
-  margin: 0 0.7em 0.18em 0;
+  margin: 0 0.6em 0.18em 0;
   border-radius: 50%;
   background: var(--gold);
   vertical-align: middle;
@@ -287,6 +289,28 @@ img { display: block; max-width: 100%; height: auto; }
   text-align: right;
 }
 
+/* closing pun: "Tse you soon" — appears with the letter */
+.signoff {
+  margin: 2.8rem auto 0;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 7vw, 3rem);
+  line-height: 1.1;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+.signoff[hidden] { display: none; }
+.signoff.revealing { animation: letterIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s both; }
+.signoff__plane {
+  font-style: normal;
+  font-size: 0.62em;
+  margin-left: 0.35em;
+  opacity: 0.85;
+  vertical-align: 0.06em;
+}
+
 /* floating hearts on reveal (gentle, decorative) */
 .heart {
   position: fixed;
@@ -342,6 +366,7 @@ img { display: block; max-width: 100%; height: auto; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none; }
   .scroll-cue .arrow { animation: none; }
-  .letter.revealing { animation: none; }
+  .letter.revealing,
+  .signoff.revealing { animation: none; }
   .heart { display: none; }
 }
