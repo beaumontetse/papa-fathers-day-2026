@@ -159,7 +159,8 @@ img { display: block; max-width: 100%; height: auto; }
   border: 1px solid rgba(216, 195, 154, 0.5);
 }
 /* portrait shots: keep them from towering */
-#chapter-1 .chapter__media { max-width: 520px; }
+.chapter__media--portrait { max-width: 520px; }
+.chapter__media--phone { max-width: 360px; }   /* tall phone screenshot */
 
 .chapter__text {
   text-align: center;
