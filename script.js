@@ -11,6 +11,32 @@
   var reduceMotion = window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- always open on the hero ---------- */
+  // Ignore browser scroll restoration and any leftover "#chapter-1" hash
+  // (e.g. from a previous "Scroll to begin" click) so the page lands at the top.
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  (function () {
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    var de = document.documentElement;
+    var prev = de.style.scrollBehavior;
+    de.style.scrollBehavior = "auto";   // jump instantly, no smooth-scroll flash
+    window.scrollTo(0, 0);
+    de.style.scrollBehavior = prev;
+  })();
+
+  // Scroll cue: smooth-scroll to the first chapter without writing a #hash to the URL.
+  var cue = document.querySelector(".scroll-cue");
+  if (cue) {
+    cue.addEventListener("click", function (e) {
+      var target = document.getElementById("chapter-1");
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    });
+  }
+
   /* ---------- scroll-reveal ---------- */
   var revealItems = document.querySelectorAll(".reveal");
 
