@@ -1,0 +1,10 @@
+# Raw camera originals — kept locally, not published (the optimized
+# versions live in images/ and are what the site uses).
+*.HEIC
+*.heic
+IMG_*.JPG
+IMG_*.jpg
+_staging/
+
+# macOS
+.DS_Store

@@ -1,0 +1,329 @@
+/* ============================================================
+   Father's Day 2026 — warm & elegant keepsake
+   ============================================================ */
+
+:root {
+  --cream:      #faf6ef;   /* page background */
+  --cream-deep: #f1e9da;   /* alt panels */
+  --ink:        #2e2a24;   /* primary text */
+  --ink-soft:   #6b6253;   /* secondary text */
+  --gold:       #b88a2e;   /* accent */
+  --gold-soft:  #d9b35f;   /* lighter accent */
+  --gold-line:  #d8c39a;   /* hairlines */
+  --shadow:     0 24px 60px -24px rgba(70, 55, 30, 0.35);
+  --maxw:       960px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  /* soft warm grain / vignette for a keepsake feel */
+  background-image:
+    radial-gradient(120% 90% at 50% -10%, #fffdf8 0%, rgba(255,253,248,0) 55%),
+    radial-gradient(100% 70% at 50% 110%, #f3ead9 0%, rgba(243,234,217,0) 60%);
+  color: var(--ink);
+  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* ---------- scroll progress bar ---------- */
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: transparent;
+  z-index: 50;
+}
+.progress span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-soft), var(--gold));
+  transition: width 0.12s linear;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem 6rem;
+}
+.hero__inner { max-width: 720px; }
+
+.eyebrow {
+  font-family: "Nunito Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 0 1.6rem;
+}
+.eyebrow::before,
+.eyebrow::after { content: "\00a0\00a0"; }
+
+.hero__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(3.2rem, 13vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--ink);
+}
+.hero__title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero__sub {
+  margin: 1.8rem auto 0;
+  max-width: 30em;
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.scroll-cue .arrow {
+  width: 1px;
+  height: 38px;
+  background: linear-gradient(var(--gold), rgba(184,138,46,0));
+  position: relative;
+  animation: cue 2.4s ease-in-out infinite;
+}
+.scroll-cue .arrow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  transform: translateX(-50%) rotate(45deg);
+}
+@keyframes cue {
+  0%, 100% { opacity: 0.35; transform: translateY(0); }
+  50%      { opacity: 1;    transform: translateY(6px); }
+}
+
+/* ---------- CHAPTERS ---------- */
+.chapter {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(4rem, 11vw, 9rem) 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.chapter__media {
+  margin: 0;
+  width: 100%;
+  max-width: 760px;
+}
+.chapter__media img {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  /* subtle warm frame */
+  border: 1px solid rgba(216, 195, 154, 0.5);
+}
+/* portrait shots: keep them from towering */
+#chapter-1 .chapter__media,
+#chapter-8 .chapter__media { max-width: 520px; }
+
+.chapter__text {
+  text-align: center;
+  max-width: 34em;
+}
+.chapter__index {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.chapter__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 6vw, 3.1rem);
+  line-height: 1.05;
+  margin: 0 0 0.6rem;
+}
+.chapter__title::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 1px;
+  margin: 0.9rem auto 0;
+  background: var(--gold-line);
+}
+.chapter__caption {
+  margin: 0;
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- FINALE / SURPRISE ---------- */
+.finale {
+  background:
+    radial-gradient(80% 60% at 50% 0%, #fffdf8, rgba(255,253,248,0) 70%),
+    var(--cream-deep);
+  border-top: 1px solid var(--gold-line);
+  padding: clamp(5rem, 14vw, 9rem) 1.5rem clamp(4rem, 10vw, 7rem);
+  text-align: center;
+}
+.finale__kicker {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--ink-soft);
+  margin: 0 0 1.6rem;
+}
+.finale__btn {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 1rem 2.4rem;
+  cursor: pointer;
+  transition: background 0.4s ease, color 0.4s ease, transform 0.2s ease;
+}
+.finale__btn:hover { background: var(--gold); color: #fff; }
+.finale__btn:active { transform: scale(0.97); }
+.finale__btn.is-hidden { display: none; }
+
+.letter {
+  max-width: 38em;
+  margin: 2.5rem auto 0;
+  padding: clamp(2rem, 6vw, 3.4rem);
+  background: #fffdf8;
+  border: 1px solid var(--gold-line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  text-align: left;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.25rem, 3.4vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--ink);
+}
+.letter[hidden] { display: none; }
+.letter:focus { outline: none; }   /* focus is moved here for screen readers; no visible ring */
+.letter.revealing {
+  animation: letterIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes letterIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+.letter p { margin: 0 0 1rem; }
+.letter p:last-child { margin-bottom: 0; }
+.letter__flourish {
+  font-family: serif;
+  font-size: 2rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.letter__sign {
+  margin-top: 1.6rem !important;
+  font-style: italic;
+  color: var(--gold);
+  text-align: right;
+}
+
+/* floating hearts on reveal (gentle, decorative) */
+.heart {
+  position: fixed;
+  bottom: -40px;
+  font-size: 1rem;
+  color: var(--gold-soft);
+  pointer-events: none;
+  z-index: 40;
+  animation: floatUp linear forwards;
+}
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0) scale(0.6) rotate(0deg); }
+  15%  { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-110vh) scale(1) rotate(40deg); }
+}
+
+/* ---------- FOOTER ---------- */
+.site-foot {
+  text-align: center;
+  padding: 3rem 1.5rem 4rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+.to-top {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.to-top:hover { text-decoration: underline; }
+.site-foot p { margin: 0; }
+
+/* ---------- SCROLL-REVEAL ANIMATION ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(42px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+/* stagger the text just after its photo */
+.chapter__text.reveal { transition-delay: 0.12s; }
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+  .scroll-cue .arrow { animation: none; }
+  .letter.revealing { animation: none; }
+  .heart { display: none; }
+}
