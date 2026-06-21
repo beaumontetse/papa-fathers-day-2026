@@ -50,13 +50,16 @@
   /* ---------- hidden surprise ---------- */
   var btn = document.getElementById("reveal-btn");
   var letter = document.getElementById("letter");
+  var signoff = document.getElementById("signoff");
 
   if (btn && letter) {
     btn.addEventListener("click", function () {
       letter.hidden = false;
+      if (signoff) signoff.hidden = false;
       // next frame so the [hidden] removal registers before animating
       window.requestAnimationFrame(function () {
         letter.classList.add("revealing");
+        if (signoff) signoff.classList.add("revealing");
       });
       btn.classList.add("is-hidden");
       btn.setAttribute("aria-expanded", "true");
